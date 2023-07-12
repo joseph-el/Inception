@@ -1,0 +1,79 @@
+
+- What is docker :
+
+Docker is a Platform for building, running and shipping applications in consistent manner
+
+- Why app can't run :
+
+peobably come across this situation where your application works on your developmnrt machine but doesn't somewhere
+else can u think of three reasons why this haooens
+
+- reasons Why :
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+containers  :
+    an isolated environment for running an application
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+containers Vs Vm
+
+
+Vm : as the name implies is an abstraction of a machine or physical hardware so we can run several virtual machines as real machine
+
+EX :
+
+ WINDOWS | LINUX
+______________
+ HYPERVISOR
+______________
+ -----
+| MAC |
+ ----- 
+
+ -- HYPERVISOR : 
+    is software we use to create and manage virtual machines there are many hypervisors available out there like virtualbox
+
+ Problem with hypervisors : needs a full copy of an os that needs to be licensed patched and monitored and that's why these VM slow to start
+
+ another problem is that these virtual machine are resource intensive because each virtual machine takes a  slice of the actual physical hardware like cpu memory 
+
+
+ -- Containers :
+  
+ 
+ give us the same kind of isolation
+
+  - Allow running mutiple apps in isolation
+  - Are lightweight
+  - Use os of the host 
+  - start quickly
+  - neeed less hardware resources
+
+
+  - allow running mutiple apps in isolation and more lightweight they don't need a full os 
+
+  (in fact all containers on single machine share the the os of the host) that means we need to license patch and monitor a single os 
+  also because the os already started on the host a container can start up pretty quickly usually in a second sometimes less and also 
+  these containers don't need a slice of the hardware resources on the host so we don't need to give them a cpu memory ...
+
+ - we can run mutiple containers 1 or 1000 side by side  
+
+
+
+ ----------------------------------------------------------------------------------------------------------------------------------------------
+  ~ Architecture of docker ~ 
+    
+
+            rest api
+    (-)   ---------> (-)
+    client              server | docker engine
+
+
+Docker uses a client server Architecture so it has client component that talks to a server component using a restful api 
