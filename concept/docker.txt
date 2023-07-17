@@ -204,3 +204,10 @@ so  we'arw talking about the code the software , the runtime, the system tools ,
  ----- Docker img build by dockerfile ==> which provide instruction for creating the image >
 
 and then there also the Docker container themselves and these the instance of the images that run in docker engine 
+
+
+
+
+--------------------------------------------------------------|
+
+Docker networking 
