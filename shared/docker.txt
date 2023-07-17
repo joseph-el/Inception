@@ -138,6 +138,25 @@ A container is a runnable instance of an image. You can create, start, stop, mov
 You can connect a container to one or more networks, attach storage to it, or even create a new image based on its current state.
 
 
+----------------------------------------------
+
+//--  how docker works <>
+
+Docker works on a client-server architecture. It includes the docker client, docker host,
+and docker registry. The docker client is used for triggering docker commands,
+the docker host is used to running the docker daemon, and the docker registry to store docker images. 
+
+
+
+
+// get more depth :
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -149,3 +168,39 @@ You can connect a container to one or more networks, attach storage to it, or ev
 
 
 
+
+
+
+
+IBM +++++++
+
+ Docker VS Vms
+
+both of the technologies address something in common is <virtualization >
+
+virtualization  : is a process where software is used to create an abstraction layer
+
+For  Vms the abstraction layer or that abstraction software is called a hypervisors 
+
+
+For docker is an open sourcee Platform that uses containerization technology  its allows
+developers to package application and their dependencies into lightweight portable --containres--
+
+Docker engine :
+this is the core software that responsible for managing the lifecycle of docker container
+
+there's some
+and the docker engine interact with the host kernel to aallocat resource and enforce isolation between Containers
+
+
+two thing primarily ; there's something called cgroups or control group and they aallocate resources among the proceses 
+
+and something else namespaces restrict a container's access and visibility to other resources on the system
+
+also ddocker images are lightweight , standalone and executable package thtat include everything you need to run a piece of software
+
+so  we'arw talking about the code the software , the runtime, the system tools , the library and any setting that we need as well
+
+ ----- Docker img build by dockerfile ==> which provide instruction for creating the image >
+
+and then there also the Docker container themselves and these the instance of the images that run in docker engine 
