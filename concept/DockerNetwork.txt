@@ -1,0 +1,14 @@
+default bridge network 
+user bridge network
+THE host
+mac vlan
+
+
+
+
+
+
+
+ virtual bridge network >
+
+dirver = | network type
