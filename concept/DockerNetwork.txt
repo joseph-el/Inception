@@ -1,14 +1,35 @@
 default bridge network 
 user bridge network
 THE host
-mac vlan
+mac vlan 
+        | 
+        ---> bridge MODE
+
+        ---> 802.1q mode  
+ipVlan
+        | 
+        ---> L2 MODE
+
+        ---> L1 MODE  
+
+overlay network 
+
+The none network
+
+
+
+
+subnet ,your home network
+the router of my home network
 
 
 
 
 
+docker   
+netoe
+fiv
 
-
- virtual bridge network >
+virtual bridge network >
 
 dirver = | network type
