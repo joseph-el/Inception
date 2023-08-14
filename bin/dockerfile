@@ -1,6 +1,0 @@
-FROM alpine:3.14
-COPY  . /app
-WORKDIR /app
-EXPOSE 80:80
-RUN  apk add build-base
-CMD c++ main.c++ -o apl && ./apl 
