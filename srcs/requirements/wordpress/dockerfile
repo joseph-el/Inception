@@ -1,22 +1,16 @@
-ARG     OS_VERSION=3.12.0
-FROM    alpine:${OS_VERSION}
+ARG OS_VERSION=3.18
+FROM alpine:${OS_VERSION}
 
-# only for test 
-RUN apk update ; apk add vim nginx openrc openssl
-RUN mkdir /run/openrc ; touch /run/openrc/softlevel ; openrc
+RUN apk update ; apk add vim nginx openrc php-fpm php-mysqli curl php \ 
+                        php-curl php-json php-phar php-mbstring php-dom; \
+                        mkdir -p /var/www/wordpress
 
+WORKDIR /var/www/wordpress
+ADD "https://wordpress.org/latest.tar.gz" .
+ADD ./tools/wp-config.php .
+ADD ./tools/setup-wordpress.sh .
+RUN tar -xzf latest.tar.gz --strip-components=1; rm -f latest.tar.gz
 
-RUN apk update ; apk add --no-cache curl php7 php7-fpm php7-mysqli \
-                        php7-json php7-curl php7-gd php7-openssl \
-                        php7-session php7-zlib php7-mbstring php7-dom \
-                        php7-xml php7-zip php7-tokenizer php7-xmlwriter \
-                        php7-simplexml php7-ctype php7-iconv php7-fileinfo \
-                        php7-intl php7-bcmath php7-opcache php7-pdo php7-pdo_mysql
-WORKDIR /var/www
+ENTRYPOINT [ "sh", "setup-wordpress.sh" ]
 
-RUN set -eux; \
-    curl -o wordpress.tar.gz -fSL "https://wordpress.org/latest.tar.gz"; \
-    tar -xzf wordpress.tar.gz --strip-components=1; \
-    rm wordpress.tar.gz
-
-CMD ["php-fpm7", "-F"]
+CMD [ "php-fpm81" , "-F"]

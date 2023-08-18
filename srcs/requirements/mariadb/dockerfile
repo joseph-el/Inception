@@ -1,4 +1,15 @@
-ARG OS_VERSION=3.18
+ARG OS_VERSION=3.12.0
 FROM alpine:${OS_VERSION}
 
-RUN apk update ; apk add vim nginx openrc openssl
+ENV DB_NAME="nothing"
+ENV DB_USER="joseph"
+ENV DB_PASSWORD="dexter"
+ENV ROOT_PASSWORD="dexter"
+
+ADD ./tools/mariadb-setup.sh /
+RUN apk update ; apk add vim openrc mysql  mysql-client php-mysqli ; \
+                 chmod +x mariadb-setup.sh
+
+ENTRYPOINT [ "sh", "mariadb-setup.sh" ]
+
+CMD ["mysqld", "--user=root"]

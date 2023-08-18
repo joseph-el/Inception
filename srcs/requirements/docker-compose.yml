@@ -1,23 +1,49 @@
-version: "3"
+version: '3'
+
 services:
   nginx:
     build:
       context: ./nginx
       dockerfile: Dockerfile
+    container_name: nginx
+    restart: always
     ports:
-      - "8000:8000"
-    depends_on:
-      - wordpress
+      - "443:443"
+      - "80:80"
     volumes:
-      - ./nginx/nginx.crt:/etc/nginx/nginx.crt
-      - ./nginx/nginx.key:/etc/nginx/nginx.key
+      - wordpress_data:/var/www/wordpress
+    networks:
+      - wordpress_network
 
   wordpress:
     build:
       context: ./wordpress
       dockerfile: Dockerfile
+    container_name: wordpress
+    restart: always
+    depends_on:
+      - mariadb
     volumes:
-      - wordpress_data:/var/www/html
+      - wordpress_data:/var/www/wordpress
+      - wordpress_db:/var/lib/mysql
+    networks:
+      - wordpress_network
+
+  mariadb:
+    build:
+      context: ./mariadb
+      dockerfile: Dockerfile
+    container_name: mariadb
+    restart: always
+    volumes:
+      - wordpress_db:/var/lib/mysql
+    networks:
+      - wordpress_network
+
+networks:
+  wordpress_network:
+    driver: bridge
 
 volumes:
   wordpress_data:
+  wordpress_db:
