@@ -1,6 +1,15 @@
 ARG OS_VERSION=3.18
 FROM alpine:${OS_VERSION}
 
+
+ENV DB_NAME=nothing
+ENV DB_USER=joseph
+ENV URL_NAME=joseph.42.fr
+ENV ADMIN_USER=joseph
+ENV USER_EMAIL=joseph@gmail.com
+ENV DB_PASS=dexter
+ENV ROOT_PASS=dexter
+
 RUN apk update ; apk add vim nginx openrc php-fpm php-mysqli curl php \ 
                         php-curl php-json php-phar php-mbstring php-dom; \
                         mkdir -p /var/www/wordpress
