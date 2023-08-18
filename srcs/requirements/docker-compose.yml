@@ -4,11 +4,12 @@ services:
   nginx:
     build:
       context: ./nginx
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     container_name: nginx
     restart: always
     ports:
-      - "8080:8080"
+      - "443:443"
+      - "80:80"
     volumes:
       - wordpress_data:/var/www/wordpress
     networks:
@@ -17,7 +18,7 @@ services:
   wordpress:
     build:
       context: ./wordpress
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     container_name: wordpress
     restart: always
     depends_on:
@@ -31,7 +32,7 @@ services:
   mariadb:
     build:
       context: ./mariadb
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     container_name: mariadb
     restart: always
     volumes:
