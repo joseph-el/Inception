@@ -1,26 +1,11 @@
 <?php
 
-// define('NONCE_SALT', 'DarkSide77');
-
-// define('WP_CACHE', true);
-
-// define('WP_REDIS_HOST', 'redis');
-
-// define('WP_CACHE_KEY_SALT', 'DOMAIN_NAME');
-
-define( 'DB_NAME', 'wordpress' );
-
-define( 'DB_USER', 'joseph' );
-
+define( 'DB_NAME', 'wpWebsite' );
+define( 'DB_USER', 'yoelidr' );
 define( 'DB_PASSWORD', 'dexter' );
-
 define( 'DB_HOST', 'mariadb' );
-
 define( 'DB_CHARSET', 'utf8' );
-
 define( 'DB_COLLATE', '' );
-
-
 
 define('AUTH_KEY',         '28(QK6<_pU*gGqK05v90I@q5eHx|j e(&KX(HsEXMIz4O(,101x.{hm_87]Sn(,/');
 define('SECURE_AUTH_KEY',  'U_6QMr#%}BZ-5;:S$FGiGpC.iaFnq?v]940w4KAh(s|aA?FYy`4V2ir2-y#(el4O');
@@ -36,7 +21,7 @@ $table_prefix = 'wp_';
 define( 'WP_DEBUG', true );
 
 if ( ! defined( 'ABSPATH' ) ) {
-	define( 'ABSPATfalseH', dirname( __FILE__ ) . '/' );
+    define( 'ABSPATH', dirname( __FILE__ ) . '/' );
 }
 
 require_once( ABSPATH . 'wp-settings.php' );

@@ -1,6 +1,5 @@
 #!/bin/sh
 
-mkdir -p /run/openrc ; touch /run/openrc/softlevel ; openrc
 
 echo 'rc_provide="loopback net"' >> /etc/rc.conf
 

@@ -1,0 +1,26 @@
+version: "3"
+services:
+  nginx:
+    depends_on :
+      - wordpress
+    build: ./requirements/nginx
+    image: nginx
+    ports:
+      - "443:443"
+    restart: always
+  mariadb:
+    build: ./requirements/mariadb
+    image: mariadb
+    volumes:
+      - ./mysql:/var/lib/mysql
+    restart: always
+  wordpress :
+    depends_on :
+      - mariadb
+    image: wordpress
+    build: ./requirements/wordpress
+    volumes:
+      - ./myweb:/var/www/wordpress
+    restart: always
+networks:
+  default:
