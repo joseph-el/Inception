@@ -3,13 +3,12 @@ ARG OS_VERSION=3.18
 FROM alpine:${OS_VERSION}
 
 RUN apk update ; apk add vim nginx openrc openssl
-RUN mkdir /run/openrc ; touch /run/openrc/softlevel ; openrc ; mkdir /etc/nginx/ssl ; rm -rf /var/cache/apk/*
+RUN mkdir -p /run/openrc ; touch /run/openrc/softlevel ; openrc ; mkdir /etc/nginx/ssl ; rm -rf /var/cache/apk/*
 RUN openssl req -x509 -nodes -newkey rsa:4096 -keyout /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.crt -days 365 -subj "/CN=localhost"
-# RUN mkdir /usr/share/nginx/html
 
 ADD ./tools/nginx.conf /etc/nginx/http.d
-ADD ./tools/setup.sh  /run/openrc
+ADD ./tools/setup-nginx.sh  /run/nginx
 # ADD ./tools/index.html /usr/share/nginx/html
-WORKDIR  /run/openrc
+WORKDIR  /run/nginx
 
-ENTRYPOINT ["sh" , "setup.sh"]
+ENTRYPOINT ["sh" , "setup-nginx.sh"]

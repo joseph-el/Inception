@@ -1,23 +1,35 @@
 #!/bin/sh
- 
-mkdir -p /run/openrc ; touch /run/openrc/softlevel ; openrc
 
-/etc/init.d/mariadb setup
-/etc/init.d/mariadb start
+RUN mkdir -p /run/openrc ; openrc ; touch /run/openrc/softlevel 
 
-while ! mysqladmin ping -hlocalhost --silent; do
-    sleep 1
-done
- 
-mariadb -e << EOF
+# /etc/init.d/mariadb setup 
+# /etc/init.d/mariadb start
 
-CREATE DATABASE $DB_NAME;
-CREATE USER '${DB_USER}'@localhost IDENTIFIED BY '${DB_PASS}';
-GRANT ALL PRIVILEGES ON $DB_NAME.* TO '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASS}';
-FLUSH PRIVILEGES;
-ALTER USER 'root'@'localhost' IDENTIFIED BY '${ROOT_PASS}';
+# while ! mysqladmin ping -hlocalhost --silent; do
+#     sleep 1
+# done
 
-EOF
+# mariadb -u root -e "CREATE DATABASE ${DB_NAME}"
+# mariadb -u root -e "CREATE USER '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASS}'";
+# mariadb -u root -e "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASS}'";
+# mariadb -u root -e "FLUSH PRIVILEGES";
+# mariadb -u root -e "ALTER USER bill@localhost IDENTIFIED BY '${ROOT_PASS}'";
+
+# sleep 2
+
+# /etc/init.d/mariadb stop
+
+# exec $@
+
+/etc/init.d/mariadb restart
+
+mariadb -u root -e "CREATE DATABASE ${DB_NAME};"
+mariadb -u root -e "CREATE USER '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASS}';"
+mariadb -u root -e "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'%';"
+mariadb -u root -e "FLUSH PRIVILEGES;"
+mariadb -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED  BY '${ROOT_PASS}';"
+
+sleep 2
 
 /etc/init.d/mariadb stop
 

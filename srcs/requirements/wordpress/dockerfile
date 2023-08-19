@@ -1,8 +1,7 @@
 ARG OS_VERSION=3.18
 FROM alpine:${OS_VERSION}
 
-
-ENV DB_NAME=nothing
+ENV DB_NAME=wordpress
 ENV DB_USER=joseph
 ENV URL_NAME=joseph.42.fr
 ENV ADMIN_USER=joseph
@@ -13,12 +12,14 @@ ENV ROOT_PASS=dexter
 RUN apk update ; apk add vim nginx openrc php-fpm php-mysqli curl php \ 
                         php-curl php-json php-phar php-mbstring php-dom; \
                         mkdir -p /var/www/wordpress
-
 WORKDIR /var/www/wordpress
-ADD "https://wordpress.org/latest.tar.gz" .
+ADD "https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar" .
 ADD ./tools/wp-config.php .
 ADD ./tools/setup-wordpress.sh .
-RUN tar -xzf latest.tar.gz --strip-components=1; rm -f latest.tar.gz
+
+RUN chmod +x wp-cli.phar ; \
+    mv wp-cli.phar /usr/local/bin/wp ; \
+    wp core download
 
 ENTRYPOINT [ "sh", "setup-wordpress.sh" ]
 
