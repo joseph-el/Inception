@@ -51,10 +51,10 @@ services:
     build : ./requirements/bonus/redis
     image: redis
     container_name: redis_container
-    depends_on:
-      - wordpress
-    ports:
-      - 6379:6379
+    # depends_on:
+    #   - wordpress
+    # ports:
+    #   - 6379:6379
     
   # code_space:
   #     build: ./requirements/bonus/code_space

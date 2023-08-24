@@ -17,22 +17,18 @@ define( 'LOGGED_IN_SALT',   'w<$4c$Hmd%/*]`Oom>(hdXW|0M=X={we6;Mpvtg+V.o<$|#_}qG
 define( 'NONCE_SALT',       'a|#h{c5|P &xWs4IZ20c2&%4!c(/uG}W:mAvy<I44`jAbup]t=]V<`}.py(wTP%%' );
 
 
-// define('WP_REDIS_HOST', 'redis');
+define ( 'WP_REDIS_HOST', 'redis' );
+define ( 'WP_REDIS_SCHEME', 'tcp' );
 define('WP_REDIS_PORT', '6379');
+
+// define('WP_CACHE', true);
+// define('WP_REDIS_HOST', 'redis');
 // define('WP_REDIS_PASSWORD', 'dexter');
 // define('WP_CACHE_KEY_SALT', 'yoelidr.42.fr');
 // define('WP_REDIS_TIMEOUT', '1');
 // define('WP_REDIS_READ_TIMEOUT', '1');
 // define('WP_CACHE', true);
-
 // define('NONCE_SALT', 'DarkSide77');
-
-define('WP_CACHE', true);
-
-define('WP_REDIS_HOST', 'redis');
-define('WP_CACHE_KEY_SALT', 'yoelidr.42.fr');
-
-define('FS_METHOD', 'direct');
 
 $table_prefix = 'wp_';
 
