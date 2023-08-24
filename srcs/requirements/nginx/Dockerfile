@@ -1,4 +1,4 @@
-ARG  OS_VERSION=3.18
+ARG  OS_VERSION=3.17
 FROM alpine:${OS_VERSION}
 
 RUN apk update 2> /dev/null; apk add vim nginx openrc openssl python3 2> /dev/null

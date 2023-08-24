@@ -1,4 +1,4 @@
-ARG  OS_VERSION=3.18
+ARG  OS_VERSION=3.17
 FROM alpine:${OS_VERSION}
 
 RUN apk update ; apk add vim openrc mysql mysql-client php-mysqli 2> /dev/null

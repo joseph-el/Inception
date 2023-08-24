@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:oldstable
 
 ENV DEBIAN_FRONTEND=noninteractive
 
