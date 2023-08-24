@@ -7,4 +7,8 @@ sed -i "s|maxmemory <bytes>|maxmemory 256mb|g" /etc/redis.conf
 sed -i "s|maxmemory-policy noeviction|maxmemory-policy allkeys-lfu|g" /etc/redis.conf
 sed -i "s|protected-mode yes|protected-mode no|g" /etc/redis.conf
 
+# rc-service redis stop
+# rc-service redis start
+
+
 exec $@

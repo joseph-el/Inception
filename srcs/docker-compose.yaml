@@ -35,50 +35,52 @@ services:
     volumes:
       - wordpress_data:/var/www/wordpress
   
-  website:
-    build: ./requirements/bonus/website
-    container_name: website_container
-    image : website
-    ports:
-      - 82:82
-    volumes:
-      - website:/var/www/pages
-    restart : always
-
+  # website:
+  #   build: ./requirements/bonus/website
+  #   container_name: website_container
+  #   image : website
+  #   ports:
+  #     - 82:82
+  #   volumes:
+  #     - website:/var/www/pages
+  #   restart : always
 
   redis:
     restart: always
+    init:  true
     build : ./requirements/bonus/redis
     image: redis
     container_name: redis_container
+    depends_on:
+      - wordpress
     ports:
       - 6379:6379
     
-  code_space:
-      build: ./requirements/bonus/code_space
-      container_name: code_space_container
-      image: code_space
-      ports:
-        - "8080:8080"
+  # code_space:
+  #     build: ./requirements/bonus/code_space
+  #     container_name: code_space_container
+  #     image: code_space
+  #     ports:
+  #       - "8080:8080"
 
-  adminer:
-      build: ./requirements/bonus/adminer
-      container_name: adminer_container
-      image: adminer
-      ports:
-        - "8000:8000"
+  # adminer:
+  #     build: ./requirements/bonus/adminer
+  #     container_name: adminer_container
+  #     image: adminer
+  #     ports:
+  #       - "8000:8000"
 
-  ftp:
-    container_name: ftp_container
-    init: true
-    image: ftp
-    build: ./requirements/bonus/ftp
-    restart: always
-    ports:
-      - 21:21
-      - 20:20
-    volumes:
-        - wordpress_data:/var/www/wordpress
+  # ftp:
+  #   container_name: ftp_container
+  #   init: true
+  #   image: ftp
+  #   build: ./requirements/bonus/ftp
+  #   restart: always
+  #   ports:
+  #     - 21:21
+  #     - 20:20
+  #   volumes:
+  #       - wordpress_data:/var/www/wordpress
 
 volumes:
   wordpress_data:
