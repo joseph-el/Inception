@@ -1,5 +1,4 @@
-ARG  OS_VERSION=3.17
-FROM alpine:${OS_VERSION}
+FROM alpine:3.17
 
 RUN apk update ; apk add vim nginx openrc
 RUN openrc ; touch /run/openrc/softlevel;

@@ -1,5 +1,4 @@
-ARG  OS_VERSION=3.17
-FROM alpine:${OS_VERSION}
+FROM alpine:3.17
 
 RUN apk update ; apk add vim nginx openrc php-fpm php-mysqli curl php mysql-client unzip \ 
                         php-curl php-json php-phar php-mbstring php-dom; \
