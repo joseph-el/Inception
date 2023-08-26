@@ -13,7 +13,6 @@ wp user update dexter --user_pass=dexter
 
 wp plugin install redis-cache 
 wp plugin activate redis-cache
-
 wp redis enable 
 
 chown -R www-data:www-data /var/www/wordpress && \
