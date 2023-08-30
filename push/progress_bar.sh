@@ -17,4 +17,4 @@ function show_progress_bar() {
     echo -e "\nDone sleeping!"
 }
 
-show_progress_bar 20 20
+show_progress_bar 1 1
