@@ -8,11 +8,11 @@ with open('/etc/rc.conf', 'a') as rc_conf:
 
 subprocess.run(['/etc/init.d/php-fpm81', 'start'])
 
-DOMAIN_NAME = 'your_domain_name'
-DATABASE_USER = 'your_database_user'
-ADMIN_USER = 'your_admin_user'
-DATABASE_PASSWORD = 'your_database_password'
-USER_MAIL = 'your_user_mail'
+DOMAIN_NAME = 'yoel-idr'
+DATABASE_USER = 'dexter'
+ADMIN_USER = 'joseph'
+DATABASE_PASSWORD = 'dexter'
+USER_MAIL = 'joseph@me.com'
 
 subprocess.run(['wp', 'core', 'install', '--url=' + DOMAIN_NAME, '--title=' + DATABASE_USER, '--admin_user=' + ADMIN_USER, '--admin_password=' + DATABASE_PASSWORD, '--admin_email=' + USER_MAIL])
 
